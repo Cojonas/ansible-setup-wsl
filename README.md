@@ -12,7 +12,7 @@ There are a couple easy ways to get to a clean Linux environment on Windows: mul
 Follow the [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
 ### Multipass
-Follow the installation instructions on the [Multipass homepage](https://multipass.run)
+Follow the installation instructMultipassions on the [ homepage](https://multipass.run)
 
 ## (Required) Docker for Desktop
 This setup repo won't install the Docker daemon in the Linux environment itself. Instead it assumes you have Docker for Desktop running either in WSL2.0 or on the Windows side and only installs client libs. I've gone with this approach because the Docker and WSL teams are constantly improving the connectivity and it was much harder to try to spin up Docker myself in WSL2.0 and nigh impossible in WSL1.0.
@@ -28,7 +28,7 @@ You'll need to get an ssh key into your new Linux environment. Afterwards, run t
 
 ```bash
 # Clone to your home directory
-git clone git@github.com:jasonwc/setup.git
+git clone git@github.com:Cojonas/ansible-setup-wsl.git
 
 # (Required) Set your username in playbook.yaml. While you're at it, check out the roles and vars_files too.
 # (Required) Set your username, repo directory, and repos in user_environment.yml (or clone my repos, what do I care!)
@@ -40,22 +40,8 @@ sudo sh bootstrap.sh
 ansible-playbook -K playbook.yaml
 ```
 
-## What do you get?
-This is a _somewhat_ opinionated but *lean* installation of tools that I want to have on a Linux environment. I do a lot of dev _in_ Docker containers, so often those containers will have specialized tools.
-
-Generally, I'm running this on my primary WSL2 workspace. I also spin up a VM from time to time for specific tasks and provision it with these tools for consistency.
-
 ### Shell
 
-> Installs basic tools like vim and tmux and sets up zsh as the default shell. Uses my [dotfiles](https://github.com/jasonwc/dotfiles) repo to configure them.
-
-- [zsh](http://zsh.sourceforge.net/): "Zsh is a shell designed for interactive use, although it is also a powerful scripting language."
-- [oh-my-zsh](https://ohmyz.sh/): "Oh My Zsh is a delightful, open source, community-driven framework for managing your Zsh configuration."
-- [vim](https://www.vim.org/): "Vim is a highly configurable text editor for efficiently creating and changing any kind of text."
-- [tmux](https://github.com/tmux/tmux): "tmux is a terminal multiplexer: it enables a number of terminals to be created, accessed, and controlled from a single screen. "
-- Syncs from my [dotfiles repo](https://github.com/jasonwc/dotfiles). Loads of config for the basics over there.
-- Clones some repos I'm working on
-- Runs `PlugInstall` in Vim
 
 ### Ops tooling
 
@@ -90,16 +76,3 @@ If you see something like this, you need to set correct permissions on the `setu
 ```
 
 This often happens with WSL installs.
-
-## Inspiration
-I learned a lot about Ansible during my time at [Mavenlink](https://github.com/mavenlink). Much of the intial idea came from a great tool maintained by the team there called "ansible-workstation" and its successor "bootstrap-workstation".
-
-These other resources helped me along the way:
-
-- [Quickstart on how to create local ansible playbooks](https://www.tricksofthetrades.net/2017/10/02/ansible-local-playbooks/)
-- [SteveEdson/dev-machine](https://github.com/SteveEdson/dev-machine)
-- [ballPointPenguin/ansible-develop](https://github.com/ballPointPenguin/ansible-develop)
-- [Wintus/Ansible-WSL](https://github.com/Wintus/Ansible-WSL)
-- [Sudo Science - Using Ansible to Set Up Zsh](https://sudo-science.com/using-ansible-to-set-up-zsh/)
-- [A Linux Dev Environment on Windows with WSL 2, Docker Desktop and More](https://www.youtube.com/watch?v=idW-an99TAM&)
-- [Running Vim commands non-interactively](https://github.com/junegunn/vim-plug/issues/675)
