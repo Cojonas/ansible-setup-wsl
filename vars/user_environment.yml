@@ -2,4 +2,4 @@
 user: strunzj
 repo_directory: repos
 repos:
- - git@github.com:Cojonas/ansible-setup-wsl.git
+ - https://github.com/Cojonas/ansible-setup-wsl
