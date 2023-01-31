@@ -1,0 +1,7 @@
+- name: copy bashrc to destination folder
+  copy:
+    src: .bashrc
+    dest: {{ user }}/.bashrc
+    owner: {{ user }}
+    group: {{ user }}
+    backup: yes
